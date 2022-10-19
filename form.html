@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Domaca zadaca 2</title>
+</head>
+<body>
+
+<a href="./index.html">Povratak na pocetnu stranicu</a>
+
+<br>
+<br>
+
+<form action="index.html">
+    <label for="username">Username:</label><br>
+    <input type="text" name="username" id="username"><br>
+    <label for="password">Password:</label><br>
+    <input type="password" name="password" id="password"><br>
+    <br>
+    <input type="submit" id="submit" value="Log in">
+</form>
+
+</body>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function (event) {
+        document.getElementById('submit').addEventListener('click', function (event) {
+            window.alert('Success! You are being redirected...');
+        })
+    });
+</script>
+
+</html>
