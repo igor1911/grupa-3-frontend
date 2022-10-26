@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Predavanje 5</title>
+</head>
+<body>
+
+<a href="./index.html">Povratak na pocetnu stranicu</a>
+<br>
+
+
+<h3>SVG primjer</h3>
+
+<br><br>
+
+<button id="cross-x-clear-canvas" onclick="clearCanvas(ctxX);">Cross X - clear canvas</button>
+<button id="cross-x" onclick="clearCanvas(ctxX); drawCross(ctxX);">Cross X</button>
+<button id="cross-x-not-ctx" onclick="clearCanvas(ctxX); drawCross();">Cross X - without context</button>
+
+<h3>Canvas primjer - X</h3>
+<canvas id="canvas" width="400" height="200" style="border: 1px solid black;">
+    Your browser does not support the HTML canvas tag.
+</canvas>
+
+<br><br>
+
+<button id="sine-wave-coord-clear-canvas" onclick="clearCanvas(ctxSineWave);">Sine Wave - clear canvas
+</button>
+<button id="sine-wave-coord" onclick="clearCanvas(ctxSineWave); drawSineWave(ctxSineWave, true);">Sine Wave - with
+    coordinate system
+</button>
+<button id="sine-wave-coord-blue" onclick="clearCanvas(ctxSineWave); drawSineWave(ctxSineWave, true, 'blue');">Sine Wave
+    - with
+    coordinate system, blue
+</button>
+<button id="sine-wave-no-coord" onclick="clearCanvas(ctxSineWave); drawSineWave(ctxSineWave);">Sine Wave - without
+    coordinate system
+</button>
+
+<h3>Canvas primjer - sinusoida</h3>
+<canvas id="canvas-sine-wave" width="400" height="200" style="border: 1px solid black;">
+    Your browser does not support the HTML canvas tag.
+</canvas>
+
+<br><br>
+
+<!-- Audio -->
+<h3>Audio file</h3>
+<audio controls preload="metadata">
+    <source src="multimedia/sound/brkovi-256kbps.mp3" type="audio/mpeg">
+    <source src="multimedia/sound/brkovi-32kbps.mp3" type="audio/mpeg">
+</audio>
+
+<br><br>
+
+
+<!-- Video -->
+<h3>Video file</h3>
+<video width="480" height="320" controls poster="img/donald-duckwebp.webp">
+    <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+    <source src="https://www.w3schools.com/html/mov_bbb.ogg" type="video/ogg">
+    Your browser does not support the video tag.
+</video>
+
+<script>
+    /** Cross X start */
+    var cX = document.getElementById('canvas');
+    var ctxX = cX.getContext('2d');
+
+    // drawCross(ctxX);
+
+    // Without context - nothing is drawn
+    // drawCross();
+    /** Cross X end */
+
+    /** Since Wave start */
+    var cSineWave = document.getElementById('canvas-sine-wave');
+    var ctxSineWave = cSineWave.getContext('2d');
+
+    // With coordinate system
+    // drawSineWave(ctxSineWave, true);
+
+    // With coordinate system, colored 'blue'
+    // drawSineWave(ctxSineWave, true, 'blue');
+
+    // Without coordinate system
+    // drawSineWave(ctxSineWave);
+    /** Sine Wave end */
+
+    function clearCanvas(context = false) {
+        if (!context) {
+            return;
+        }
+
+        context.clearRect(0, 0, 400, 200);
+    }
+
+    function drawCross(context = false, offsetX = 0, offsetY = 0) {
+
+        if (!context) {
+            return;
+        }
+
+        context.moveTo(offsetX, offsetY);
+        context.lineTo(400 + offsetX, 200 + offsetY);
+        context.moveTo(400 + offsetX, offsetY);
+        context.lineTo(offsetX, 200 + offsetY);
+
+        context.stroke();
+    }
+
+    function drawSineWave(context = false, showCoordinateSystem = false, color = 'black') {
+
+        if (!context) {
+            return;
+        }
+
+        if (showCoordinateSystem) {
+            drawCoordinateSystem(context);
+        }
+
+        drawCircle(context, 50, 100, 50, Math.PI, 2 * Math.PI, color);
+        drawCircle(context, 150, 100, 50, 0, Math.PI, color);
+        drawCircle(context, 250, 100, 50, Math.PI, 2 * Math.PI, color);
+        drawCircle(context, 350, 100, 50, 0, Math.PI, color);
+    }
+
+    function drawCircle(context = false, x, y, radius, start, end, color) {
+
+        if (!context) {
+            return;
+        }
+
+        context.strokeStyle = color;
+        context.beginPath();
+        context.arc(x, y, radius, start, end);
+        context.stroke();
+    }
+
+    function drawCoordinateSystem(context = false) {
+
+        if (!context) {
+            return;
+        }
+
+        context.moveTo(0, 100);
+        context.lineTo(400, 100);
+        context.moveTo(200, 0);
+        context.lineTo(200, 200);
+        context.stroke();
+    }
+
+</script>
+
+</body>
+</html>
