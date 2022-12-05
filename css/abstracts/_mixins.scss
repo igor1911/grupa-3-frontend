@@ -1,0 +1,13 @@
+@mixin divScale($size, $gap, $width, $height, $fontSize) {
+  @media only screen and (max-width: $size) {
+    .content-div-parent {
+      gap: $gap;
+    }
+
+    .content-div {
+      width: $width;
+      height: $height;
+      font-size: $fontSize;
+    }
+  }
+}

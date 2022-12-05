@@ -1,0 +1,80 @@
+@import 'abstracts/mixins';
+@import 'base/colors';
+
+@keyframes animationMoveDown {
+  from {
+    top: -1000px;
+  }
+  to {
+    top: 0;
+  }
+}
+
+body {
+  background-image: url("https://www.ozeltelekom.com.tr/wp-content/uploads/revslider/home/background-blur-clean-531880.jpg");
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.content-div-parent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 100px;
+  width: 100%;
+}
+
+.content-div {
+  width: 300px;
+  height: 300px;
+  text-align: center;
+  color: whitesmoke;
+  background-color: rgba(100, 100, 100, 0.7);
+  border: 5px solid antiquewhite;
+  font-size: 125px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Ubuntu Mono', monospace;
+  position: relative;
+
+  top: -1000px;
+  animation-name: animationMoveDown;
+  animation-duration: 1.5s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+.animation-delay-15 {
+  animation-delay: 1.5s;
+}
+
+.animation-delay-30 {
+  animation-delay: 3s;
+}
+
+.animation-delay-45 {
+  animation-delay: 4.5s;
+}
+
+.bg-color-black {
+  background-color: $black;
+}
+
+.bg-color-red {
+  background-color: $red;
+}
+
+.bg-color-orange {
+  background-color: $orange;
+}
+
+@include divScale(1200px, 50px, 250px, 250px, 100px);
+@include divScale(900px, 30px, 150px, 150px, 75px);
+@include divScale(600px, 30px, 100px, 100px, 50px);
